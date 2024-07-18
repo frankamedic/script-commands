@@ -2,7 +2,7 @@
 
 # Required parameters:
 # @raycast.schemaVersion 1
-# @raycast.title Create Task
+# @raycast.title Create Marvin Task
 # @raycast.mode silent
 
 # Optional parameters:
@@ -12,24 +12,24 @@
 
 # Documentation: 
 # @raycast.description Create Task
-# @raycast.author Faris Aziz
-# @raycast.authorURL https://github.com/farisaziz12
+# @raycast.author Frank Sloan
+# @raycast.authorURL https://github.com/frankamedic
 
-# Get your API Token from: https://todoist.com/prefs/integrations
+# Get your API Token from: https://app.amazingmarvin.com/pre?api
 
 API_TOKEN="APITOKENHERE"
 
 if [ -z "$API_TOKEN" ]; then
-	echo "Todoist API token is missing.";
+	echo "Marvin API token is missing.";
 	exit 1;
 fi
 
 TASK="$1"
 
 if [[ $TASK != "" ]]; then
-    curl "https://api.todoist.com/rest/v2/tasks" \
+    curl "https://serv.amazingmarvin.com/api/AddTask" \
     	-X POST \
-    	--data '{"content": "'"$TASK"'"}' \
+    	--data '{"title": "'"$TASK"'"}' \
     	-H "Content-Type: application/json" \
     	-H "Authorization: Bearer $API_TOKEN"
 
